@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  angular-login-page:
+    build: 
+      context: ../
+    ports:
+      - 4200:4200
+    container_name: angular-login-page
+    volumes:
+      - "/app/node_modules"
+      - ../:/app
