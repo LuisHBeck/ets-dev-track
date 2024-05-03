@@ -1,5 +1,15 @@
-<input 
-    [type]="type"
-    [formControlName]="formName"
-    [placeholder]="placeholder"
-/>
+<div class="input-wrapper">
+    <label [for]="inputName">{{ label }}</label>
+    <div class="input-content">
+        <input 
+            [type]="type"
+            [placeholder]="placeholder"
+            [value]="value"
+            (input)="onInput($event)"
+        />
+        <div class="icon">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
+
