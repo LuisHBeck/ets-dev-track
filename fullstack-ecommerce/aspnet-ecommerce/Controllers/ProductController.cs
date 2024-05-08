@@ -20,7 +20,7 @@ public class ProductController : ControllerBase
     public IActionResult Create(CreateProductDto productDto)
     {
         DetailingProductDto product = _productService.Create(productDto);
-        return Ok(product);
+        return CreatedAtAction(nameof(GetProductById), new {id = product.Id}, product);
     }
 
     [HttpGet("preview")]
@@ -31,5 +31,12 @@ public class ProductController : ControllerBase
         List<PreviewProductDto> productPreviwList = _productService
             .GetProductPreview(skip, take);
         return productPreviwList;
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetProductById(int id)
+    {
+        PreviewProductDto? product = _productService.GetProductById(id);
+        return Ok(product);
     }
 }

@@ -2,6 +2,7 @@ using AutoMapper;
 using Data;
 using Data.Dtos.Product;
 using Dta.Dtos.Product;
+using Infra.Exceptions;
 using Models;
 
 namespace Services;
@@ -30,5 +31,12 @@ public class ProductService
         List<Product> products = _context.Products
             .Skip(skip).Take(take).ToList();
         return _mapper.Map<List<PreviewProductDto>>(products);
+    }
+
+    public PreviewProductDto? GetProductById(int id)
+    {
+        Product? product = _context.Products.FirstOrDefault(prod => prod.Id == id);
+        if(product is null) throw new ProductNotFoundException(); 
+        return _mapper.Map<PreviewProductDto>(product);
     }
 }
