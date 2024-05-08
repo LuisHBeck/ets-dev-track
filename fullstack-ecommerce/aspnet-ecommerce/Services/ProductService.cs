@@ -24,4 +24,11 @@ public class ProductService
         _context.SaveChanges();
         return _mapper.Map<DetailingProductDto>(product);
     }
+
+    public List<PreviewProductDto> GetProductPreview(int skip, int take)
+    {
+        List<Product> products = _context.Products
+            .Skip(skip).Take(take).ToList();
+        return _mapper.Map<List<PreviewProductDto>>(products);
+    }
 }

@@ -12,6 +12,10 @@ public class Product
     public string Name { get; set; }
 
     [Required]
+    [MaxLengthAttribute(300)]
+    public string Description { get; set; }
+
+    [Required]
     public double Price { get; set; }
 
     [Required]

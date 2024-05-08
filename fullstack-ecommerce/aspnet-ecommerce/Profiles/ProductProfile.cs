@@ -11,5 +11,6 @@ public class ProductProfile : Profile
     {
         CreateMap<CreateProductDto, Product>();
         CreateMap<Product, DetailingProductDto>();
+        CreateMap<Product, PreviewProductDto>();
     }
 }

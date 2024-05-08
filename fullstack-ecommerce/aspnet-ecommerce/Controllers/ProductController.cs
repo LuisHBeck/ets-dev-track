@@ -22,4 +22,14 @@ public class ProductController : ControllerBase
         DetailingProductDto product = _productService.Create(productDto);
         return Ok(product);
     }
+
+    [HttpGet("preview")]
+    public IEnumerable<PreviewProductDto> GetProductPreview(
+        [FromQuery] int skip=0, [FromQuery] int take=10
+    )
+    {
+        List<PreviewProductDto> productPreviwList = _productService
+            .GetProductPreview(skip, take);
+        return productPreviwList;
+    }
 }
