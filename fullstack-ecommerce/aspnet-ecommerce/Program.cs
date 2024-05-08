@@ -1,4 +1,5 @@
 using Data;
+using Infra.Exceptions.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Services;
 
@@ -34,6 +35,8 @@ if (app.Environment.IsDevelopment())
 // app.UseHttpsRedirection();
 
 // app.UseAuthorization();
+
+app.UseExceptionMiddleware();
 
 app.MapControllers();
 
