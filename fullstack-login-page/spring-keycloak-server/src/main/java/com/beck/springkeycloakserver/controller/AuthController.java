@@ -1,6 +1,7 @@
 package com.beck.springkeycloakserver.controller;
 
 import com.beck.springkeycloakserver.dto.KeycloakLoginResponse;
+import com.beck.springkeycloakserver.dto.UserCreationRequestDto;
 import com.beck.springkeycloakserver.dto.UserLoginRequestDto;
 import com.beck.springkeycloakserver.service.AuthService;
 import jakarta.validation.Valid;
@@ -29,5 +30,13 @@ public class AuthController {
     {
         KeycloakLoginResponse keycloakLoginResponse = authService.login(userLoginRequestDto);
         return ResponseEntity.ok(keycloakLoginResponse);
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity signup(@RequestBody @Valid UserCreationRequestDto userCreationRequestDto)
+            throws URISyntaxException, IOException, InterruptedException
+    {
+        authService.createUser(userCreationRequestDto);
+        return ResponseEntity.noContent().build();
     }
 }
