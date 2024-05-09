@@ -7,15 +7,19 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
+  apiUrl: string = "http://127.0.0.1:8080/auth";
 
   constructor(private httpClient: HttpClient) { }
 
   login(email: string, password: string) {
-    return this.httpClient.post<LoginResponse>("/login", {email, password}).pipe(
+    return this.httpClient.post<LoginResponse>(this.apiUrl + "/login", {email, password}).pipe(
       tap((value) => {
-        sessionStorage.setItem("authToken", value.token);
-        sessionStorage.setItem("name", value.name);
+        sessionStorage.setItem("authToken", value.access_token);
       })
     )
+  }
+
+  signup(name: string, email: string, password: string) {
+    return this.httpClient.post<LoginResponse>(this.apiUrl + "/signup", {name, email, password})
   }
 }

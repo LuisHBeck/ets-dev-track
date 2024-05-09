@@ -44,12 +44,13 @@ export class SignupComponent {
   }
 
   submit() {
-    this.loginService.login(
+    this.loginService.signup(
+      this.signupForm.value.name,
       this.signupForm.value.email,
       this.signupForm.value.password
     ).subscribe({
-      next: () => this.toastrService.success("successful login"),
-      error: () => this.toastrService.error("Failed to login! Try again")
+      next: () => this.toastrService.success("successful signup"),
+      error: () => this.toastrService.error("Failed to signup! Try again")
     })
   }
 
