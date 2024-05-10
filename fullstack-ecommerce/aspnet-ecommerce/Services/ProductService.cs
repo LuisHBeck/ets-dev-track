@@ -36,7 +36,7 @@ public class ProductService
     public PreviewProductDto? GetProductById(int id)
     {
         Product? product = _context.Products.FirstOrDefault(prod => prod.Id == id);
-        if(product is null) throw new ProductNotFoundException(); 
+        if(product is null) throw new ProductNotFoundException(id); 
         return _mapper.Map<PreviewProductDto>(product);
     }
 }
