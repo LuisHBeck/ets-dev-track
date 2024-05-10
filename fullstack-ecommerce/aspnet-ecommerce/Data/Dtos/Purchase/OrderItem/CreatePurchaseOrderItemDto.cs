@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Data.Dtos.Purchase;
+namespace Data.Dtos.Purchase.OrderItem;
 
 public class CreatePurchaseOrderItemDto
-{
+{   
     [Required]
     public int ProductId { get; set; }
 

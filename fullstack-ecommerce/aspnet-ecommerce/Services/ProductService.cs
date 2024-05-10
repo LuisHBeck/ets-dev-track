@@ -1,7 +1,7 @@
 using AutoMapper;
 using Data;
-using Data.Dtos.Product;
-using Dta.Dtos.Product;
+using Data.Dtos.Products;
+using Dta.Dtos.Products;
 using Infra.Exceptions;
 using Models;
 

@@ -76,10 +76,15 @@ namespace aspnet_ecommerce.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ProductQuantity")
+                        .HasColumnType("integer");
+
                     b.Property<int>("PurchaseOrderId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("PurchaseOrderId");
 
@@ -88,13 +93,26 @@ namespace aspnet_ecommerce.Migrations
 
             modelBuilder.Entity("Models.PurchaseOrderItem", b =>
                 {
+                    b.HasOne("Models.Product", "Product")
+                        .WithMany("PurchaseOrderItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Models.PurchaseOrder", "PurchaseOrder")
                         .WithMany("Items")
                         .HasForeignKey("PurchaseOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Product");
+
                     b.Navigation("PurchaseOrder");
+                });
+
+            modelBuilder.Entity("Models.Product", b =>
+                {
+                    b.Navigation("PurchaseOrderItems");
                 });
 
             modelBuilder.Entity("Models.PurchaseOrder", b =>

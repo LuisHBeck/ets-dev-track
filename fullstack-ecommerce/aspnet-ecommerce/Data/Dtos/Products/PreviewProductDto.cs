@@ -1,4 +1,4 @@
-namespace Data.Dtos.Product;
+namespace Data.Dtos.Products;
 
 public class PreviewProductDto
 {

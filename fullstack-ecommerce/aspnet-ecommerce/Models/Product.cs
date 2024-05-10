@@ -20,4 +20,6 @@ public class Product
 
     [Required]
     public int StockQuantity { get; set; }
+
+    public virtual ICollection<PurchaseOrderItem> PurchaseOrderItems { get; set; }
 }

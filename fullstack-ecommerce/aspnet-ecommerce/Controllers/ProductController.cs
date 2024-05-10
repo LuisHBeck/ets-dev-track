@@ -1,5 +1,5 @@
-using Data.Dtos.Product;
-using Dta.Dtos.Product;
+using Data.Dtos.Products;
+using Dta.Dtos.Products;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 

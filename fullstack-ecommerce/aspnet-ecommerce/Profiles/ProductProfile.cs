@@ -1,6 +1,6 @@
 using AutoMapper;
-using Data.Dtos.Product;
-using Dta.Dtos.Product;
+using Data.Dtos.Products;
+using Dta.Dtos.Products;
 using Models;
 
 namespace Profiles;

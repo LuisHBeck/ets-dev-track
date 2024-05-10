@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // set db connection
 builder.Services.AddDbContext<EcommerceContext>(opts =>
-    opts.UseNpgsql(builder.Configuration.GetConnectionString("EcommerceConnection"))
+    opts.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("EcommerceConnection"))
 );
 
 // set automapper
@@ -15,7 +15,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // set services classes injection
 builder.Services.AddScoped<ProductService>();
-
+builder.Services.AddScoped<PurchaseService>();
 // Add services to the container.
 
 builder.Services.AddControllers().AddNewtonsoftJson();
